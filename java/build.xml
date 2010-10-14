@@ -9,6 +9,7 @@
 	<property name="build.home"    value="${basedir}/build"/>
 	<property name="dist.home"     value="${basedir}/dist"/>
 	<property name="docs.home"     value="${basedir}/docs"/>
+	<!-- Point to the WCI libraries folder -->
 	<property name="lib.home"      value="C:\bea\alui\ptportal\10.3.0\lib\java"/>
 
 	<path id="compile.classpath">
