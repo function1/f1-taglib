@@ -1,0 +1,57 @@
+<project name="F1CustomTags" default="dist" basedir=".">
+    <description>
+		Build WCI Custom tags
+	</description>
+	<property name="app.name"      value="f1customtags"/>
+	<property name="app.path"      value="/${app.name}"/>
+	<property name="app.version"   value="0.1"/>
+	<property name="src.home"      value="${basedir}/src"/>
+	<property name="build.home"    value="${basedir}/build"/>
+	<property name="dist.home"     value="${basedir}/dist"/>
+	<property name="docs.home"     value="${basedir}/docs"/>
+	<property name="lib.home"      value="C:\bea\alui\ptportal\10.3.0\lib\java"/>
+
+	<path id="compile.classpath">
+		<!-- Include all WCI JAR files that will be required by your application -->
+		<fileset dir="${lib.home}">
+		  <include name="*.jar"/>
+		</fileset>
+	</path>
+
+
+
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build.home}"/>
+	</target>
+	<target name="compile" depends="init" description="compile the source " >
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src.home}" destdir="${build.home}">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution" >
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist.home}/lib"/>
+
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist.home}/lib/${app.name}-${app.version}.jar" basedir="${build.home}"/>
+	</target>
+
+	<target name="javadoc" depends="compile" description="Create Javadoc API documentation">
+		<mkdir dir="${dist.home}/docs/api"/>
+		<javadoc sourcepath="${src.home}" destdir="${dist.home}/docs/api" packagenames="*">
+			<classpath refid="compile.classpath"/>
+		</javadoc>
+	</target>
+
+	<target name="clean" description="clean up" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build.home}"/>
+		<delete dir="${dist.home}"/>
+	</target>
+</project>
