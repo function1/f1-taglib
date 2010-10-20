@@ -40,8 +40,8 @@
 		<!-- Create the distribution directory -->
 		<mkdir dir="${dist.home}/lib"/>
 
-		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-		<jar jarfile="${dist.home}/lib/${app.name}-${app.version}.jar" basedir="${build.home}"/>
+		<!-- Put everything in ${build} into the jar file -->
+		<jar jarfile="${dist.home}/lib/${app.name}.jar" basedir="${build.home}"/>
 	</target>
 
 	<target name="javadoc" depends="compile" description="Create Javadoc API documentation">
