@@ -1,6 +1,6 @@
 <project name="F1CustomTags" default="dist" basedir=".">
     <description>
-		Build WCI Custom tags
+		 Build Function1 WebCenter Interaction 10gR3 Custom Tag Library
 	</description>
 	<property environment="env"/>
 	<property name="app.name"      value="f1customtags"/>
@@ -10,7 +10,8 @@
 	<property name="build.home"    value="${basedir}/build"/>
 	<property name="dist.home"     value="${basedir}/dist"/>
 	<property name="docs.home"     value="${basedir}/docs"/>
-	<property name="lib.home"      value="${env.PORTAL_HOME}/lib/java"/>
+	<property name="lib.home"      value="${env.PT_HOME}/ptportal/10.3.0/lib/java"/>
+	<!--<property name="lib.home"      value="${env.PORTAL_HOME}/lib/java"/>-->
 
 	<path id="compile.classpath">
 		<!-- Include all WCI JAR files that will be required by your application -->
