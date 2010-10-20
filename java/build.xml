@@ -2,6 +2,7 @@
     <description>
 		Build WCI Custom tags
 	</description>
+	<property environment="env"/>
 	<property name="app.name"      value="f1customtags"/>
 	<property name="app.path"      value="/${app.name}"/>
 	<property name="app.version"   value="0.1"/>
@@ -9,8 +10,7 @@
 	<property name="build.home"    value="${basedir}/build"/>
 	<property name="dist.home"     value="${basedir}/dist"/>
 	<property name="docs.home"     value="${basedir}/docs"/>
-	<!-- Point to the WCI libraries folder -->
-	<property name="lib.home"      value="C:\bea\alui\ptportal\10.3.0\lib\java"/>
+	<property name="lib.home"      value="${env.PORTAL_HOME}\lib\java"/>
 
 	<path id="compile.classpath">
 		<!-- Include all WCI JAR files that will be required by your application -->
