@@ -10,9 +10,13 @@
 	<property name="build.home"    value="${basedir}/build"/>
 	<property name="dist.home"     value="${basedir}/dist"/>
 	<property name="docs.home"     value="${basedir}/docs"/>
-	<property name="lib.home"      value="${env.PT_HOME}/ptportal/10.3.0/lib/java"/>
-	<!--<property name="lib.home"      value="${env.PORTAL_HOME}/lib/java"/>-->
-
+	<!-- set portal.home depending on whether PORTAL_HOME is present-->
+	<condition property="portal.home" value="${env.PORTAL_HOME}">
+		<isset property="env.PORTAL_HOME" />
+	</condition>
+	<property name="portal.home" value="${env.PT_HOME}/ptportal/10.3.0" />
+	<property name="lib.home"      value="${portal.home}/lib/java"/>
+	
 	<path id="compile.classpath">
 		<!-- Include all WCI JAR files that will be required by your application -->
 		<fileset dir="${lib.home}">
